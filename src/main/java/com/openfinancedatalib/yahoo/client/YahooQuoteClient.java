@@ -3,37 +3,28 @@ package com.openfinancedatalib.yahoo.client;
 import java.net.URI;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.List;
+import java.util.Map;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.openfinancedatalib.yahoo.session.YahooSessionManager;
-import com.openfinancedatalib.yahoo.url.YahooUrlBuilder;
 import com.openfinancedatalib.yahoo.validator.YahooResponseValidator;
 
-public class YahooFundamentalsClient {
-
-    private static final List<String> DEFAULT_MODULES = List.of(
-            "summaryDetail",
-            "defaultKeyStatistics",
-            "financialData");
+public class YahooQuoteClient {
 
     private final YahooSessionManager sessionManager;
     private final ObjectMapper mapper = new ObjectMapper();
 
-    public YahooFundamentalsClient(YahooSessionManager sessionManager) {
+    public YahooQuoteClient(YahooSessionManager sessionManager) {
         this.sessionManager = sessionManager;
     }
 
-    /**
-     * Executa a operação usando um crumb já validado.
-     */
-    public JsonNode getFundamentals(String symbol, String crumb) {
+    public JsonNode request(String symbol, Map<String, String> params, String crumb) {
         try {
-            String url = YahooUrlBuilder.fundamentals(
-                    symbol,
-                    DEFAULT_MODULES,
-                    crumb);
+            String url =
+                    "https://query1.finance.yahoo.com/v7/finance/quote"
+                            + "?symbols=" + symbol
+                            + "&crumb=" + crumb;
 
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(url))
@@ -41,18 +32,19 @@ public class YahooFundamentalsClient {
                     .header("User-Agent", "Mozilla/5.0")
                     .build();
 
-            HttpResponse<String> response = sessionManager.getClient()
-                    .send(request, HttpResponse.BodyHandlers.ofString());
+            HttpResponse<String> response =
+                    sessionManager.getClient()
+                            .send(request, HttpResponse.BodyHandlers.ofString());
 
             YahooResponseValidator.validate(
                     response.statusCode(),
-                    response.body());
+                    response.body()
+            );
 
             return mapper.readTree(response.body());
 
         } catch (Exception e) {
-            throw new RuntimeException(
-                    "Failed to fetch Yahoo fundamentals for " + symbol, e);
+            throw new RuntimeException("Failed to fetch Yahoo quote for " + symbol, e);
         }
     }
 }

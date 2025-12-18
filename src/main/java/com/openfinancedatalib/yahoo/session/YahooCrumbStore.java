@@ -13,7 +13,7 @@ public final class YahooCrumbStore {
     }
 
     public static synchronized String get() {
-        if (crumb == null || isExpired()) {
+        if (crumb == null || !isValid()) {
             return null;
         }
         return crumb;
@@ -29,7 +29,7 @@ public final class YahooCrumbStore {
         expiresAt = null;
     }
 
-    public static boolean isExpired() {
-        return expiresAt == null || Instant.now().isAfter(expiresAt);
+    public static boolean isValid() {
+        return expiresAt != null && Instant.now().isBefore(expiresAt) && crumb != null;
     }
 }
