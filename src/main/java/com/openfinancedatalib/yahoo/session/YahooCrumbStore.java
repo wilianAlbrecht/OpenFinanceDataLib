@@ -29,7 +29,7 @@ public final class YahooCrumbStore {
         expiresAt = null;
     }
 
-    private static boolean isExpired() {
+    public static boolean isExpired() {
         return expiresAt == null || Instant.now().isAfter(expiresAt);
     }
 }

@@ -9,14 +9,14 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.openfinancedatalib.yahoo.session.YahooSessionManager;
 import com.openfinancedatalib.yahoo.url.YahooUrlBuilder;
+import com.openfinancedatalib.yahoo.validator.YahooResponseValidator;
 
 public class YahooFundamentalsClient {
 
     private static final List<String> DEFAULT_MODULES = List.of(
             "summaryDetail",
             "defaultKeyStatistics",
-            "financialData"
-    );
+            "financialData");
 
     private final YahooSessionManager sessionManager;
     private final ObjectMapper mapper = new ObjectMapper();
@@ -33,8 +33,7 @@ public class YahooFundamentalsClient {
             String url = YahooUrlBuilder.fundamentals(
                     symbol,
                     DEFAULT_MODULES,
-                    crumb
-            );
+                    crumb);
 
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(url))
@@ -42,9 +41,12 @@ public class YahooFundamentalsClient {
                     .header("User-Agent", "Mozilla/5.0")
                     .build();
 
-            HttpResponse<String> response =
-                    sessionManager.getClient()
-                            .send(request, HttpResponse.BodyHandlers.ofString());
+            HttpResponse<String> response = sessionManager.getClient()
+                    .send(request, HttpResponse.BodyHandlers.ofString());
+
+            YahooResponseValidator.validate(
+                    response.statusCode(),
+                    response.body());
 
             return mapper.readTree(response.body());
 
