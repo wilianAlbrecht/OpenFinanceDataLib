@@ -1,25 +1,25 @@
 package com.openfinancedatalib.yahoo.session;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
-class YahooCrumbProviderTest {
+class YahooCrumbStoreStaticTest {
 
     @Test
-    void shouldFetchCrumbWithValidCookies() {
-        YahooSessionManager sessionManager = new YahooSessionManager();
-        YahooCrumbProvider provider = new YahooCrumbProvider(sessionManager);
+    void shouldReuseCrumbAcrossProviders() {
+        YahooSessionManager session1 = new YahooSessionManager();
+        YahooCrumbProvider provider1 = new YahooCrumbProvider(session1);
 
-        String crumb = provider.fetchCrumb();
+        String crumb1 = provider1.getCrumb();
 
-        System.out.println("Yahoo Crumb fetched: [" + crumb + "]");
+        YahooSessionManager session2 = new YahooSessionManager();
+        YahooCrumbProvider provider2 = new YahooCrumbProvider(session2);
 
-        assertNotNull(crumb, "Crumb should not be null");
-        assertFalse(crumb.isBlank(), "Crumb should not be blank");
-        assertFalse(
-                crumb.contains("Invalid Cookie"),
-                "Yahoo rejected crumb due to invalid cookies"
-        );
+        String crumb2 = provider2.getCrumb();
+
+        System.out.println("Crumb 1: " + crumb1);
+        System.out.println("Crumb 2: " + crumb2);
+
+        assertEquals(crumb1, crumb2);
     }
 }

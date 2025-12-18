@@ -1,3 +1,7 @@
-/home/wilian/Documentos/Git/OpenFinanceDataLib/src/main/java/com/openfinancedatalib/yahoo/session/YahooCookieStore.java
+/home/wilian/Documentos/Git/OpenFinanceDataLib/src/main/java/com/openfinancedatalib/OpenFinanceData.java
+/home/wilian/Documentos/Git/OpenFinanceDataLib/src/main/java/com/openfinancedatalib/yahoo/YahooRequestCoordinator.java
+/home/wilian/Documentos/Git/OpenFinanceDataLib/src/main/java/com/openfinancedatalib/yahoo/client/YahooFundamentalsClient.java
 /home/wilian/Documentos/Git/OpenFinanceDataLib/src/main/java/com/openfinancedatalib/yahoo/session/YahooCrumbProvider.java
+/home/wilian/Documentos/Git/OpenFinanceDataLib/src/main/java/com/openfinancedatalib/yahoo/session/YahooCrumbStore.java
 /home/wilian/Documentos/Git/OpenFinanceDataLib/src/main/java/com/openfinancedatalib/yahoo/session/YahooSessionManager.java
+/home/wilian/Documentos/Git/OpenFinanceDataLib/src/main/java/com/openfinancedatalib/yahoo/url/YahooUrlBuilder.java

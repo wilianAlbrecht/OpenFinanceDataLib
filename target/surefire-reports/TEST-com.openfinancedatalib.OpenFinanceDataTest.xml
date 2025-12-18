@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.openfinancedatalib.OpenFinanceDataTest" time="1.681" tests="1" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="21"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/home/wilian/Documentos/Git/OpenFinanceDataLib/target/test-classes:/home/wilian/Documentos/Git/OpenFinanceDataLib/target/classes:/home/wilian/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.17.2/jackson-databind-2.17.2.jar:/home/wilian/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.17.2/jackson-annotations-2.17.2.jar:/home/wilian/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.17.2/jackson-core-2.17.2.jar:/home/wilian/.m2/repository/org/slf4j/slf4j-api/2.0.13/slf4j-api-2.0.13.jar:/home/wilian/.m2/repository/org/junit/jupiter/junit-jupiter/5.10.2/junit-jupiter-5.10.2.jar:/home/wilian/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.2/junit-jupiter-api-5.10.2.jar:/home/wilian/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/home/wilian/.m2/repository/org/junit/platform/junit-platform-commons/1.10.2/junit-platform-commons-1.10.2.jar:/home/wilian/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/wilian/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.2/junit-jupiter-params-5.10.2.jar:/home/wilian/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.2/junit-jupiter-engine-5.10.2.jar:/home/wilian/.m2/repository/org/junit/platform/junit-platform-engine/1.10.2/junit-platform-engine-1.10.2.jar:/home/wilian/.m2/repository/org/mockito/mockito-core/5.11.0/mockito-core-5.11.0.jar:/home/wilian/.m2/repository/net/bytebuddy/byte-buddy/1.14.12/byte-buddy-1.14.12.jar:/home/wilian/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.12/byte-buddy-agent-1.14.12.jar:/home/wilian/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="America/Cuiaba"/>
+    <property name="os.name" value="Linux"/>
+    <property name="java.vm.specification.version" value="21"/>
+    <property name="user.country" value="BR"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/jdk-21.0.8-oracle-x64/lib"/>
+    <property name="sun.java.command" value="/home/wilian/Documentos/Git/OpenFinanceDataLib/target/surefire/surefirebooter-20251218002920432_3.jar /home/wilian/Documentos/Git/OpenFinanceDataLib/target/surefire 2025-12-18T00-29-20_356-jvmRun1 surefire-20251218002920432_1tmp surefire_0-20251218002920432_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="test" value="com.openfinancedatalib.OpenFinanceDataTest"/>
+    <property name="surefire.test.class.path" value="/home/wilian/Documentos/Git/OpenFinanceDataLib/target/test-classes:/home/wilian/Documentos/Git/OpenFinanceDataLib/target/classes:/home/wilian/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.17.2/jackson-databind-2.17.2.jar:/home/wilian/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.17.2/jackson-annotations-2.17.2.jar:/home/wilian/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.17.2/jackson-core-2.17.2.jar:/home/wilian/.m2/repository/org/slf4j/slf4j-api/2.0.13/slf4j-api-2.0.13.jar:/home/wilian/.m2/repository/org/junit/jupiter/junit-jupiter/5.10.2/junit-jupiter-5.10.2.jar:/home/wilian/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.2/junit-jupiter-api-5.10.2.jar:/home/wilian/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/home/wilian/.m2/repository/org/junit/platform/junit-platform-commons/1.10.2/junit-platform-commons-1.10.2.jar:/home/wilian/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/wilian/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.2/junit-jupiter-params-5.10.2.jar:/home/wilian/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.2/junit-jupiter-engine-5.10.2.jar:/home/wilian/.m2/repository/org/junit/platform/junit-platform-engine/1.10.2/junit-platform-engine-1.10.2.jar:/home/wilian/.m2/repository/org/mockito/mockito-core/5.11.0/mockito-core-5.11.0.jar:/home/wilian/.m2/repository/net/bytebuddy/byte-buddy/1.14.12/byte-buddy-1.14.12.jar:/home/wilian/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.12/byte-buddy-agent-1.14.12.jar:/home/wilian/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/home/wilian"/>
+    <property name="user.language" value="pt"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2025-07-15"/>
+    <property name="java.home" value="/usr/lib/jvm/jdk-21.0.8-oracle-x64"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/home/wilian/Documentos/Git/OpenFinanceDataLib"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="/home/wilian/Documentos/Git/OpenFinanceDataLib/target/surefire/surefirebooter-20251218002920432_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="21.0.8+12-LTS-250"/>
+    <property name="user.name" value="wilian"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="6.8.0-90-generic"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="maven.ext.class.path" value="/home/wilian/.vscode/extensions/oracle.oracle-java-25.0.0/nbcode/java/maven-nblib/netbeans-eventspy.jar"/>
+    <property name="localRepository" value="/home/wilian/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="java.version" value="21.0.8"/>
+    <property name="user.dir" value="/home/wilian/Documentos/Git/OpenFinanceDataLib"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="21.0.8+12-LTS-250"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="65.0"/>
+  </properties>
+  <testcase name="shouldFetchFundamentalsUsingPublicApi" classname="com.openfinancedatalib.OpenFinanceDataTest" time="1.659">
+    <system-out><![CDATA[{
+  "quoteSummary" : {
+    "result" : [ {
+      "summaryDetail" : {
+        "maxAge" : 1,
+        "priceHint" : {
+          "raw" : 2,
+          "fmt" : "2",
+          "longFmt" : "2"
+        },
+        "previousClose" : {
+          "raw" : 274.61,
+          "fmt" : "274.61"
+        },
+        "open" : {
+          "raw" : 275.01,
+          "fmt" : "275.01"
+        },
+        "dayLow" : {
+          "raw" : 271.7,
+          "fmt" : "271.70"
+        },
+        "dayHigh" : {
+          "raw" : 276.16,
+          "fmt" : "276.16"
+        },
+        "regularMarketPreviousClose" : {
+          "raw" : 274.61,
+          "fmt" : "274.61"
+        },
+        "regularMarketOpen" : {
+          "raw" : 275.01,
+          "fmt" : "275.01"
+        },
+        "regularMarketDayLow" : {
+          "raw" : 271.7,
+          "fmt" : "271.70"
+        },
+        "regularMarketDayHigh" : {
+          "raw" : 276.16,
+          "fmt" : "276.16"
+        },
+        "dividendRate" : {
+          "raw" : 1.04,
+          "fmt" : "1.04"
+        },
+        "dividendYield" : {
+          "raw" : 0.0038,
+          "fmt" : "0.38%"
+        },
+        "exDividendDate" : {
+          "raw" : 1762732800,
+          "fmt" : "2025-11-10"
+        },
+        "payoutRatio" : {
+          "raw" : 0.1367,
+          "fmt" : "13.67%"
+        },
+        "fiveYearAvgDividendYield" : {
+          "raw" : 0.53,
+          "fmt" : "0.53"
+        },
+        "beta" : {
+          "raw" : 1.107,
+          "fmt" : "1.11"
+        },
+        "trailingPE" : {
+          "raw" : 36.784843,
+          "fmt" : "36.78"
+        },
+        "forwardPE" : {
+          "raw" : 29.802866,
+          "fmt" : "29.80"
+        },
+        "volume" : {
+          "raw" : 49406521,
+          "fmt" : "49.41M",
+          "longFmt" : "49,406,521"
+        },
+        "regularMarketVolume" : {
+          "raw" : 49406521,
+          "fmt" : "49.41M",
+          "longFmt" : "49,406,521"
+        },
+        "averageVolume" : {
+          "raw" : 48790341,
+          "fmt" : "48.79M",
+          "longFmt" : "48,790,341"
+        },
+        "averageVolume10days" : {
+          "raw" : 39907560,
+          "fmt" : "39.91M",
+          "longFmt" : "39,907,560"
+        },
+        "averageDailyVolume10Day" : {
+          "raw" : 39907560,
+          "fmt" : "39.91M",
+          "longFmt" : "39,907,560"
+        },
+        "bid" : {
+          "raw" : 272.0,
+          "fmt" : "272.00"
+        },
+        "ask" : {
+          "raw" : 274.97,
+          "fmt" : "274.97"
+        },
+        "bidSize" : {
+          "raw" : 100,
+          "fmt" : "100",
+          "longFmt" : "100"
+        },
+        "askSize" : {
+          "raw" : 400,
+          "fmt" : "400",
+          "longFmt" : "400"
+        },
+        "marketCap" : {
+          "raw" : 4034211348480,
+          "fmt" : "4.03T",
+          "longFmt" : "4,034,211,348,480"
+        },
+        "yield" : { },
+        "ytdReturn" : { },
+        "qtdReturn" : { },
+        "totalAssets" : { },
+        "expireDate" : { },
+        "strikePrice" : { },
+        "openInterest" : { },
+        "fiftyTwoWeekLow" : {
+          "raw" : 169.21,
+          "fmt" : "169.21"
+        },
+        "fiftyTwoWeekHigh" : {
+          "raw" : 288.62,
+          "fmt" : "288.62"
+        },
+        "allTimeHigh" : {
+          "raw" : 288.62,
+          "fmt" : "288.62"
+        },
+        "allTimeLow" : {
+          "raw" : 0.049107,
+          "fmt" : "0.05"
+        },
+        "priceToSalesTrailing12Months" : {
+          "raw" : 9.6938715,
+          "fmt" : "9.69"
+        },
+        "fiftyDayAverage" : {
+          "raw" : 268.5354,
+          "fmt" : "268.54"
+        },
+        "twoHundredDayAverage" : {
+          "raw" : 229.3583,
+          "fmt" : "229.36"
+        },
+        "trailingAnnualDividendRate" : {
+          "raw" : 1.02,
+          "fmt" : "1.02"
+        },
+        "trailingAnnualDividendYield" : {
+          "raw" : 0.0037143587,
+          "fmt" : "0.37%"
+        },
+        "navPrice" : { },
+        "currency" : "USD",
+        "fromCurrency" : null,
+        "toCurrency" : null,
+        "lastMarket" : null,
+        "coinMarketCapLink" : null,
+        "volume24Hr" : { },
+        "volumeAllCurrencies" : { },
+        "circulatingSupply" : { },
+        "algorithm" : null,
+        "maxSupply" : { },
+        "totalSupply" : { },
+        "startDate" : { },
+        "tradeable" : false,
+        "fullyDilutedValue" : { },
+        "volume24HrMarketCapPercent" : { }
+      },
+      "defaultKeyStatistics" : {
+        "maxAge" : 1,
+        "priceHint" : {
+          "raw" : 2,
+          "fmt" : "2",
+          "longFmt" : "2"
+        },
+        "enterpriseValue" : {
+          "raw" : 4074483744768,
+          "fmt" : "4.07T",
+          "longFmt" : "4,074,483,744,768"
+        },
+        "forwardPE" : {
+          "raw" : 29.802866,
+          "fmt" : "29.80"
+        },
+        "profitMargins" : {
+          "raw" : 0.26915002,
+          "fmt" : "26.92%"
+        },
+        "floatShares" : {
+          "raw" : 14750642146,
+          "fmt" : "14.75B",
+          "longFmt" : "14,750,642,146"
+        },
+        "sharesOutstanding" : {
+          "raw" : 14776353000,
+          "fmt" : "14.78B",
+          "longFmt" : "14,776,353,000"
+        },
+        "sharesShort" : {
+          "raw" : 129458559,
+          "fmt" : "129.46M",
+          "longFmt" : "129,458,559"
+        },
+        "sharesShortPriorMonth" : {
+          "raw" : 115557836,
+          "fmt" : "115.56M",
+          "longFmt" : "115,557,836"
+        },
+        "sharesShortPreviousMonthDate" : {
+          "raw" : 1761868800,
+          "fmt" : "2025-10-31"
+        },
+        "dateShortInterest" : {
+          "raw" : 1764288000,
+          "fmt" : "2025-11-28"
+        },
+        "sharesPercentSharesOut" : {
+          "raw" : 0.0088,
+          "fmt" : "0.88%"
+        },
+        "heldPercentInsiders" : {
+          "raw" : 0.016970001,
+          "fmt" : "1.70%"
+        },
+        "heldPercentInstitutions" : {
+          "raw" : 0.64404,
+          "fmt" : "64.40%"
+        },
+        "shortRatio" : {
+          "raw" : 2.64,
+          "fmt" : "2.64"
+        },
+        "shortPercentOfFloat" : {
+          "raw" : 0.0088,
+          "fmt" : "0.88%"
+        },
+        "beta" : {
+          "raw" : 1.107,
+          "fmt" : "1.11"
+        },
+        "impliedSharesOutstanding" : {
+          "raw" : 14840390000,
+          "fmt" : "14.84B",
+          "longFmt" : "14,840,390,000"
+        },
+        "morningStarOverallRating" : { },
+        "morningStarRiskRating" : { },
+        "category" : null,
+        "bookValue" : {
+          "raw" : 4.991,
+          "fmt" : "4.99"
+        },
+        "priceToBook" : {
+          "raw" : 54.466038,
+          "fmt" : "54.47"
+        },
+        "annualReportExpenseRatio" : { },
+        "ytdReturn" : { },
+        "qtdReturn" : { },
+        "beta3Year" : { },
+        "totalAssets" : { },
+        "yield" : { },
+        "fundFamily" : null,
+        "fundInceptionDate" : { },
+        "legalType" : null,
+        "threeYearAverageReturn" : { },
+        "fiveYearAverageReturn" : { },
+        "priceToSalesTrailing12Months" : { },
+        "lastFiscalYearEnd" : {
+          "raw" : 1758931200,
+          "fmt" : "2025-09-27"
+        },
+        "nextFiscalYearEnd" : {
+          "raw" : 1790467200,
+          "fmt" : "2026-09-27"
+        },
+        "mostRecentQuarter" : {
+          "raw" : 1758931200,
+          "fmt" : "2025-09-27"
+        },
+        "earningsQuarterlyGrowth" : {
+          "raw" : 0.864,
+          "fmt" : "86.40%"
+        },
+        "revenueQuarterlyGrowth" : { },
+        "netIncomeToCommon" : {
+          "raw" : 112010002432,
+          "fmt" : "112.01B",
+          "longFmt" : "112,010,002,432"
+        },
+        "trailingEps" : {
+          "raw" : 7.39,
+          "fmt" : "7.39"
+        },
+        "forwardEps" : {
+          "raw" : 9.12127,
+          "fmt" : "9.12"
+        },
+        "pegRatio" : { },
+        "lastSplitFactor" : "4:1",
+        "lastSplitDate" : {
+          "raw" : 1598832000,
+          "fmt" : "2020-08-31"
+        },
+        "enterpriseToRevenue" : {
+          "raw" : 9.791,
+          "fmt" : "9.79"
+        },
+        "enterpriseToEbitda" : {
+          "raw" : 28.149,
+          "fmt" : "28.15"
+        },
+        "52WeekChange" : {
+          "raw" : 0.099363446,
+          "fmt" : "9.94%"
+        },
+        "SandP52WeekChange" : {
+          "raw" : 0.15905356,
+          "fmt" : "15.91%"
+        },
+        "lastDividendValue" : {
+          "raw" : 0.26,
+          "fmt" : "0.26"
+        },
+        "lastDividendDate" : {
+          "raw" : 1762732800,
+          "fmt" : "2025-11-10"
+        },
+        "lastCapGain" : { },
+        "annualHoldingsTurnover" : { },
+        "latestFundingDate" : { },
+        "latestAmountRaised" : { },
+        "latestImpliedValuation" : { },
+        "latestShareClass" : null,
+        "leadInvestor" : null,
+        "fundingToDate" : { },
+        "totalFundingRounds" : { }
+      },
+      "financialData" : {
+        "maxAge" : 86400,
+        "currentPrice" : {
+          "raw" : 271.84,
+          "fmt" : "271.84"
+        },
+        "targetHighPrice" : {
+          "raw" : 350.0,
+          "fmt" : "350.00"
+        },
+        "targetLowPrice" : {
+          "raw" : 215.0,
+          "fmt" : "215.00"
+        },
+        "targetMeanPrice" : {
+          "raw" : 287.70682,
+          "fmt" : "287.71"
+        },
+        "targetMedianPrice" : {
+          "raw" : 300.0,
+          "fmt" : "300.00"
+        },
+        "recommendationMean" : {
+          "raw" : 2.0,
+          "fmt" : "2.00"
+        },
+        "recommendationKey" : "buy",
+        "numberOfAnalystOpinions" : {
+          "raw" : 41,
+          "fmt" : "41",
+          "longFmt" : "41"
+        },
+        "totalCash" : {
+          "raw" : 54697000960,
+          "fmt" : "54.7B",
+          "longFmt" : "54,697,000,960"
+        },
+        "totalCashPerShare" : {
+          "raw" : 3.702,
+          "fmt" : "3.7"
+        },
+        "ebitda" : {
+          "raw" : 144748003328,
+          "fmt" : "144.75B",
+          "longFmt" : "144,748,003,328"
+        },
+        "totalDebt" : {
+          "raw" : 112377004032,
+          "fmt" : "112.38B",
+          "longFmt" : "112,377,004,032"
+        },
+        "quickRatio" : {
+          "raw" : 0.771,
+          "fmt" : "0.77"
+        },
+        "currentRatio" : {
+          "raw" : 0.893,
+          "fmt" : "0.89"
+        },
+        "totalRevenue" : {
+          "raw" : 416161005568,
+          "fmt" : "416.16B",
+          "longFmt" : "416,161,005,568"
+        },
+        "debtToEquity" : {
+          "raw" : 152.411,
+          "fmt" : "152.41%"
+        },
+        "revenuePerShare" : {
+          "raw" : 27.84,
+          "fmt" : "27.84"
+        },
+        "returnOnAssets" : {
+          "raw" : 0.22964,
+          "fmt" : "22.96%"
+        },
+        "returnOnEquity" : {
+          "raw" : 1.7142199,
+          "fmt" : "171.42%"
+        },
+        "grossProfits" : {
+          "raw" : 195201007616,
+          "fmt" : "195.2B",
+          "longFmt" : "195,201,007,616"
+        },
+        "freeCashflow" : {
+          "raw" : 78862254080,
+          "fmt" : "78.86B",
+          "longFmt" : "78,862,254,080"
+        },
+        "operatingCashflow" : {
+          "raw" : 111482003456,
+          "fmt" : "111.48B",
+          "longFmt" : "111,482,003,456"
+        },
+        "earningsGrowth" : {
+          "raw" : 0.912,
+          "fmt" : "91.20%"
+        },
+        "revenueGrowth" : {
+          "raw" : 0.079,
+          "fmt" : "7.90%"
+        },
+        "grossMargins" : {
+          "raw" : 0.46905,
+          "fmt" : "46.90%"
+        },
+        "ebitdaMargins" : {
+          "raw" : 0.34782,
+          "fmt" : "34.78%"
+        },
+        "operatingMargins" : {
+          "raw" : 0.31647,
+          "fmt" : "31.65%"
+        },
+        "profitMargins" : {
+          "raw" : 0.26915002,
+          "fmt" : "26.92%"
+        },
+        "financialCurrency" : "USD"
+      }
+    } ],
+    "error" : null
+  }
+}
+]]></system-out>
+  </testcase>
+</testsuite>
