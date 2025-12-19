@@ -3,34 +3,73 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="
            http://maven.apache.org/POM/4.0.0
-           http://maven.apache.org/xsd/maven-4.0.0.xsd">
+           https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.openfinancedata</groupId>
+    <!-- ===============================
+    PROJECT COORDINATES
+    =============================== -->
+    <groupId>io.github.wilianalbrecht</groupId>
     <artifactId>openfinancedata-lib</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>1.0.1</version>
+    <packaging>jar</packaging>
+
     <name>OpenFinanceDataLib</name>
     <description>
         Java library for stable, raw access to Yahoo Finance data
         (cookies, crumb, headers, retries).
     </description>
+    <url>https://github.com/wilianAlbrecht/OpenFinanceDataLib.git</url>
 
-    <packaging>jar</packaging>
+    <!-- ===============================
+    LICENSE
+    =============================== -->
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://opensource.org/licenses/MIT</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
 
+    <!-- ===============================
+    DEVELOPER INFO
+    =============================== -->
+    <developers>
+        <developer>
+            <id>wilianalbrecht</id>
+            <name>Wilian Albrecht</name>
+            <email>wilian0012@hotmail.com</email>
+        </developer>
+    </developers>
+
+    <!-- ===============================
+    SCM (GIT)
+    =============================== -->
+    <scm>
+        <url>https://github.com/wilianAlbrecht/OpenFinanceDataLib</url>
+        <connection>scm:git:https://github.com/wilianAlbrecht/OpenFinanceDataLib</connection>
+        <developerConnection>scm:git:https://github.com/wilianAlbrecht/OpenFinanceDataLib</developerConnection>
+        <tag>v1.0.0</tag>
+    </scm>
+
+    <!-- ===============================
+    PROPERTIES
+    =============================== -->
     <properties>
         <java.version>21</java.version>
-        <maven.compiler.source>${java.version}</maven.compiler.source>
-        <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <!-- Dependency versions -->
         <jackson.version>2.17.2</jackson.version>
         <slf4j.version>2.0.13</slf4j.version>
         <junit.jupiter.version>5.10.2</junit.jupiter.version>
         <mockito.version>5.11.0</mockito.version>
     </properties>
 
+    <!-- ===============================
+    DEPENDENCIES
+    =============================== -->
     <dependencies>
 
         <dependency>
@@ -45,6 +84,7 @@
             <version>${slf4j.version}</version>
         </dependency>
 
+        <!-- Tests -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
@@ -61,8 +101,25 @@
 
     </dependencies>
 
+
+    <!-- ===============================
+    BUILD & PUBLISHING
+    =============================== -->
     <build>
         <plugins>
+
+            <!-- INTEGRATION TESTS (Yahoo real) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>3.2.5</version>
+                <configuration>
+                    <includes>
+                        <include>**/*IT.java</include>
+                    </includes>
+                </configuration>
+            </plugin>
+
 
             <!-- Compiler -->
             <plugin>
@@ -74,13 +131,74 @@
                 </configuration>
             </plugin>
 
-            <!-- Surefire (JUnit 5) -->
+            <!-- Tests -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.5</version>
                 <configuration>
                     <useModulePath>false</useModulePath>
+                </configuration>
+            </plugin>
+
+            <!-- Sources JAR -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.3.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Javadoc JAR -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.6.3</version>
+                <configuration>
+                    <failOnError>false</failOnError>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+
+            <!-- GPG SIGNING -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- CENTRAL PORTAL PUBLISHING -->
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.9.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
                 </configuration>
             </plugin>
 

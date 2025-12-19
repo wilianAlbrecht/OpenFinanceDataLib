@@ -1,6 +1,7 @@
 package com.openfinancedatalib.yahoo.validator;
 
 import com.openfinancedatalib.yahoo.exception.YahooAuthException;
+import com.openfinancedatalib.yahoo.exception.YahooInvalidSymbolException;
 import com.openfinancedatalib.yahoo.exception.YahooRateLimitException;
 import com.openfinancedatalib.yahoo.exception.YahooUnavailableException;
 
@@ -14,9 +15,9 @@ import com.openfinancedatalib.yahoo.exception.YahooUnavailableException;
  * <p>
  * The validator is responsible for:
  * <ul>
- *   <li>Interpreting HTTP status codes</li>
- *   <li>Detecting invalid or unexpected response bodies</li>
- *   <li>Translating Yahoo errors into domain-specific exceptions</li>
+ * <li>Interpreting HTTP status codes</li>
+ * <li>Detecting invalid or unexpected response bodies</li>
+ * <li>Translating Yahoo errors into domain-specific exceptions</li>
  * </ul>
  *
  * <p>
@@ -32,8 +33,8 @@ public class YahooResponseValidator {
      * <p>
      * This method performs two levels of validation:
      * <ol>
-     *   <li>HTTP status code validation</li>
-     *   <li>Response body content validation</li>
+     * <li>HTTP status code validation</li>
+     * <li>Response body content validation</li>
      * </ol>
      *
      * <p>
@@ -41,12 +42,13 @@ public class YahooResponseValidator {
      * error scenario is thrown.
      *
      * @param statusCode HTTP status code returned by Yahoo
-     * @param body response body returned by Yahoo
+     * @param body       response body returned by Yahoo
      *
-     * @throws YahooAuthException if the request is unauthorized or returns HTML
-     * @throws YahooRateLimitException if Yahoo rate limits the request
+     * @throws YahooAuthException        if the request is unauthorized or returns
+     *                                   HTML
+     * @throws YahooRateLimitException   if Yahoo rate limits the request
      * @throws YahooUnavailableException if Yahoo is unavailable or returns
-     *         an invalid/empty payload
+     *                                   an invalid/empty payload
      */
     public static void validate(int statusCode, String body) {
 
@@ -70,8 +72,7 @@ public class YahooResponseValidator {
         // Yahoo is unavailable or experiencing internal issues
         if (statusCode >= 500) {
             throw new YahooUnavailableException(
-                    "Yahoo service unavailable (status " + statusCode + ")"
-            );
+                    "Yahoo service unavailable (status " + statusCode + ")");
         }
 
         // ----------------------------------
@@ -88,6 +89,15 @@ public class YahooResponseValidator {
         // Yahoo sometimes returns HTML when authentication fails
         if (body.startsWith("<!DOCTYPE html") || body.startsWith("<html")) {
             throw new YahooAuthException("HTML response received from Yahoo");
+        }
+
+        // SEMANTIC ERRORS (INPUT / SYMBOL)
+        if (body.contains("\"code\":\"Not Found\"")
+                && body.contains("No data found")) {
+
+            throw new YahooInvalidSymbolException(
+                    "Invalid or unsupported symbol. Yahoo Finance expects a valid ticker " +
+                            "(e.g. AAPL, MSFT, PETR4.SA).");
         }
 
         // Explicit error payload returned by Yahoo
