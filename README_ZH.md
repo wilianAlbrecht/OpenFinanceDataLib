@@ -10,9 +10,9 @@
 
 该库的详细使用文档提供以下语言版本：
 
-- 🇧🇷 **Português** — `documentation/documentation_PT-BR`
-- 🇺🇸 **English** — `documentation/documentation_EN`
-- 🇨🇳 **中文** — `documentation/documentation_ZH`
+- 🇧🇷 [Português](/documentation/documentation_PT-BR.md)
+- 🇺🇸 [English](/documentation/documentation_EN.md)
+- 🇨🇳 [中文](/documentation/documentation_ZH.md)
 
 > 文档涵盖安装方式、使用方法、可用功能以及错误处理。
 
