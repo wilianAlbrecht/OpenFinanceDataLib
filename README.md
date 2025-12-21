@@ -10,9 +10,10 @@ A **technical and reusable Java library** for **stable RAW access** to **Yahoo F
 
 Detailed usage documentation is available in the following languages:
 
-- 🇧🇷 **Português** — `documentation/documentation_PT-BR`
-- 🇺🇸 **English** — `documentation/documentation_EN`
-- 🇨🇳 **中文** — `documentation/documentation_ZH`
+- 🇧🇷 [Português](documentation/documentation_PT-BR.me)
+- 🇺🇸 [English](documentation/documentation_EN.me)
+- 🇨🇳 [中文](documentation/documentation_ZH.me)
+- 
 > The documentation covers installation, usage, available functions, and error handling.
 
 ---
