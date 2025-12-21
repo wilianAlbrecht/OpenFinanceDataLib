@@ -11,9 +11,9 @@ Biblioteca Java **técnica e reutilizável** para acesso **RAW e estável** a da
 
 A documentação detalhada de uso da biblioteca está disponível nos idiomas abaixo:
 
-- 🇧🇷 **Português** — `documentation/documentation_PT-BR`
-- 🇺🇸 **English** — `documentation/documentation_EN`
-- 🇨🇳 **中文** — `documentation/documentation_ZH`
+- 🇧🇷 [Português](/documentation/documentation_PT-BR.md)
+- 🇺🇸 [English](/documentation/documentation_EN.md)
+- 🇨🇳 [中文](/documentation/documentation_ZH.md)
 
 > A documentação cobre instalação, uso, funções disponíveis e tratamento de erros.
 
