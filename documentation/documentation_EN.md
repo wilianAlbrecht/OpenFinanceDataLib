@@ -12,9 +12,9 @@ This documentation focuses **exclusively on how to use the library**: how to ins
 
 ```xml
 <dependency>
-  <groupId>com.openfinancedata</groupId>
-  <artifactId>open-finance-data-lib</artifactId>
-  <version>1.0.1</version>
+    <groupId>io.github.wilianalbrecht</groupId>
+    <artifactId>openfinancedata-lib</artifactId>
+    <version>1.0.1</version>
 </dependency>
 ```
 
