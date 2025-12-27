@@ -12,7 +12,7 @@
     =============================== -->
     <groupId>io.github.wilianalbrecht</groupId>
     <artifactId>openfinancedata-lib</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <packaging>jar</packaging>
 
     <name>OpenFinanceDataLib</name>
@@ -51,7 +51,7 @@
         <url>https://github.com/wilianAlbrecht/OpenFinanceDataLib</url>
         <connection>scm:git:https://github.com/wilianAlbrecht/OpenFinanceDataLib</connection>
         <developerConnection>scm:git:https://github.com/wilianAlbrecht/OpenFinanceDataLib</developerConnection>
-        <tag>v1.0.1</tag>
+        <tag>v1.0.2</tag>
     </scm>
 
     <!-- ===============================
