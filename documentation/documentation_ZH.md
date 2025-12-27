@@ -34,13 +34,52 @@ dependencies {
 
 ### 实例化
 
+#### 重要说明 – 实例生命周期
+
+`OpenFinanceDataLib` 在设计上是**有状态的（stateful）**，并在内存中维护缓存（cookies、crumb 以及 HTTP 会话数据），以实现**更高性能和低延迟**，非常适合用于后端服务和行情数据系统。
+
+Yahoo Finance 对执行上下文**极其敏感**。  
+如果内部会话被丢失或重新创建，Yahoo 将返回 `401 Unauthorized`。
+
+因此：
+
+- 必须在整个应用生命周期中复用**同一个 `OpenFinanceData` 实例**
+- 该实例**必须是 static 或真正的单例**
+- 不要在每个请求中创建新的实例
+
 ```java
-OpenFinanceData openFinanceData = new OpenFinanceData();
+// 静态实例
+private static final OpenFinanceData client = new OpenFinanceData();
 ```
 
-- 空构造函数
-- 会话、Cookies 和 Crumb 自动初始化
-- Crumb 缓存在 JVM 范围内共享
+或通过依赖注入（DI）：
+
+```java
+@Bean
+public OpenFinanceData openFinanceData() {
+    return new OpenFinanceData();
+}
+```
+
+#### 开发工具说明
+
+会**重启或重新加载应用上下文**的开发工具（例如 **Spring Boot DevTools**）**不兼容**此库。
+
+DevTools 会清空内存缓存并破坏 Yahoo 会话，导致在重载后出现 `401 Unauthorized` 错误。
+
+使用本库时，请**禁用 DevTools**：
+
+```properties
+spring.devtools.restart.enabled=false
+```
+
+开发环境建议：
+
+- 使用 IDE 的 HotSwap 进行小范围修改
+- 需要时手动重启应用
+- 避免使用热重载（hot-reload）框架
+
+该行为是由 Yahoo Finance 的会话模型决定的，是为了性能而做出的**有意设计取舍**。
 
 ---
 
