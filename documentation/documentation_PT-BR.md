@@ -34,27 +34,52 @@ dependencies {
 
 ### Instanciação
 
+### Instantiation
+
+#### Importante – Ciclo de vida da instância
+
+`OpenFinanceDataLib` é stateful por design e mantém cache em memória (cookies, crumb e dados de sessão HTTP) para alcançar melhor performance e baixa latência, sendo adequada para backends e serviços de market data.
+
+O Yahoo Finance é *extremamente sensível* ao contexto de execução.
+Se a sessão interna for perdida ou recriada, o Yahoo responderá com `401 Unauthorized`.
+
+Por isso:
+
+- Uma única instância de OpenFinanceData deve ser reutilizada durante todo o ciclo de vida da aplicação
+- A instância *deve ser estática* ou um singleton realn
+- Nunca crie novas instâncias por requisição
+
 ```java
-OpenFinanceData openFinanceData = new OpenFinanceData();
+// Instanciação estática
+private static final OpenFinanceData client = new OpenFinanceData();
 ```
 
-- Construtor vazio
-- Sessão, cookies e crumb são inicializados automaticamente
-- Cache de crumb é compartilhado por toda a JVM
+ou via DI:
 
----
+```java
+@Bean
+public OpenFinanceData openFinanceData() {
+    return new OpenFinanceData();
+}
+```
+#### Ferramentas de desenvolvimento
+Ferramentas que reiniciam ou recarregam o contexto da aplicação (como o Spring Boot DevTools) não são compatíveis com esta biblioteca.
 
-## Conceito Importante
+O DevTools destrói o cache em memória e quebra a sessão do Yahoo, causando erros `401 Unauthorized` após o reload.
 
-**Todas as funções retornam `JsonNode` RAW**.
+Ao usar esta biblioteca, desative o DevTools:
 
-A lib **não interpreta**, **não valida semântica**, **não converte** os dados.
+```aplication.properties
+spring.devtools.restart.enabled=false
+}
+```
 
-O consumidor é responsável por:
-- Ler campos
-- Validar presença
-- Converter tipos
-- Aplicar regras de negócio
+Durante o desenvolvimento:
+- utilize HotSwap da IDE para pequenas alterações
+- reinicie a aplicação manualmente quando necessário
+- evite frameworks de hot-reload
+
+Esse comportamento é exigido pelo modelo de sessão do Yahoo Finance e é uma decisão intencional de design em favor da performance.
 
 ---
 
