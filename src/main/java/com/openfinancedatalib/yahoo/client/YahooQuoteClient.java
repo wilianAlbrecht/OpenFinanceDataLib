@@ -19,27 +19,27 @@ import com.openfinancedatalib.yahoo.validator.YahooResponseValidator;
  * {@code /v7/finance/quote} endpoint, which provides
  * current market data such as:
  * <ul>
- *   <li>Last price</li>
- *   <li>Price change and percentage</li>
- *   <li>Volume</li>
- *   <li>Market capitalization</li>
+ * <li>Last price</li>
+ * <li>Price change and percentage</li>
+ * <li>Volume</li>
+ * <li>Market capitalization</li>
  * </ul>
  *
  * <p>
  * Responsibilities:
  * <ul>
- *   <li>Build the quote request URL</li>
- *   <li>Execute the HTTP request</li>
- *   <li>Validate the response</li>
- *   <li>Parse the JSON payload</li>
+ * <li>Build the quote request URL</li>
+ * <li>Execute the HTTP request</li>
+ * <li>Validate the response</li>
+ * <li>Parse the JSON payload</li>
  * </ul>
  *
  * <p>
  * This class does NOT:
  * <ul>
- *   <li>Manage cookies or session lifecycle</li>
- *   <li>Fetch or refresh crumbs</li>
- *   <li>Handle retries or fallback logic</li>
+ * <li>Manage cookies or session lifecycle</li>
+ * <li>Fetch or refresh crumbs</li>
+ * <li>Handle retries or fallback logic</li>
  * </ul>
  *
  * <p>
@@ -82,36 +82,35 @@ public class YahooQuoteClient {
      *
      * @param symbol asset ticker symbol (e.g. AAPL, MSFT)
      * @param params optional parameters (currently unused)
-     * @param crumb valid Yahoo crumb
+     * @param crumb  valid Yahoo crumb
      * @return {@link JsonNode} containing quote data
      *
      * @throws RuntimeException if the request fails or
-     *         the response cannot be parsed
+     *                          the response cannot be parsed
      */
     public JsonNode request(String symbol, Map<String, String> params, String crumb) {
         try {
             // Build Yahoo Finance quote URL
-            String url =
-                    "https://query1.finance.yahoo.com/v7/finance/quote"
-                            + "?symbols=" + symbol
-                            + "&crumb=" + crumb;
+            String url = "https://query1.finance.yahoo.com/v7/finance/quote"
+                    + "?symbols=" + symbol
+                    + "&crumb=" + crumb;
 
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(url))
                     .GET()
                     .header("User-Agent", "Mozilla/5.0")
+                    .header("Accept", "application/json")
+                    .header("Accept-Encoding", "identity")
                     .build();
 
             // Execute request using an HttpClient with valid cookies
-            HttpResponse<String> response =
-                    sessionManager.getClient()
-                            .send(request, HttpResponse.BodyHandlers.ofString());
+            HttpResponse<String> response = sessionManager.getClient()
+                    .send(request, HttpResponse.BodyHandlers.ofString());
 
             // Validate HTTP status and response body
             YahooResponseValidator.validate(
                     response.statusCode(),
-                    response.body()
-            );
+                    response.body());
 
             // Parse and return JSON response
             return mapper.readTree(response.body());

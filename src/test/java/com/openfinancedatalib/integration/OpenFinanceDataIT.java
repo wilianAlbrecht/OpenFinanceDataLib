@@ -64,6 +64,7 @@ class OpenFinanceDataIT {
     @Test
     void shouldFetchQuote() {
         JsonNode result = api.getQuote("AAPL");
+        System.out.println(result.toPrettyString());
         assertNotNull(result);
     }
 
