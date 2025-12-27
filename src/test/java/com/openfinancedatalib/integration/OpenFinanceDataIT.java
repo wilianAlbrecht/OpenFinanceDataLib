@@ -14,6 +14,7 @@ class OpenFinanceDataIT {
     private static OpenFinanceData api;
 
     @BeforeAll
+    @SuppressWarnings("unused")
     static void setup() {
         api = new OpenFinanceData();
     }
@@ -91,6 +92,7 @@ class OpenFinanceDataIT {
     // COOL-DOWN BETWEEN TESTS (ANTI RATE-LIMIT)
     // -------------------------------------------------
     @AfterEach
+    @SuppressWarnings("unused")
     void cooldown() throws InterruptedException {
         Thread.sleep(1200);
     }

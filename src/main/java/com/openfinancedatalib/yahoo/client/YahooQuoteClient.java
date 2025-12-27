@@ -88,6 +88,7 @@ public class YahooQuoteClient {
      * @throws RuntimeException if the request fails or
      *                          the response cannot be parsed
      */
+    @SuppressWarnings("UseSpecificCatch")
     public JsonNode request(String symbol, Map<String, String> params, String crumb) {
         try {
             // Build Yahoo Finance quote URL

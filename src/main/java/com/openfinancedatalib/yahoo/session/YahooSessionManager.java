@@ -118,6 +118,7 @@ public class YahooSessionManager {
      * This method is idempotent: once the session is initialized,
      * subsequent calls will have no effect.
      */
+    @SuppressWarnings("UseSpecificCatch")
     private void ensureSession() {
         if (initialized) {
             return;

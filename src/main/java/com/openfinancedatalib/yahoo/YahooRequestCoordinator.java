@@ -65,14 +65,14 @@ public class YahooRequestCoordinator {
      * all clients to ensure cookies are consistent.
      */
     public YahooRequestCoordinator() {
-        YahooSessionManager sessionManager = new YahooSessionManager();
+        YahooSessionManager session = new YahooSessionManager();
 
-        this.crumbProvider = new YahooCrumbProvider(sessionManager);
-        this.quoteSummaryClient = new YahooQuoteSummaryClient(sessionManager);
-        this.quoteClient = new YahooQuoteClient(sessionManager);
-        this.historyClient = new YahooHistoryClient(sessionManager);
-        this.searchClient = new YahooSearchClient(sessionManager);
-        this.sessionManager = sessionManager;
+        this.crumbProvider = new YahooCrumbProvider(session);
+        this.quoteSummaryClient = new YahooQuoteSummaryClient(session);
+        this.quoteClient = new YahooQuoteClient(session);
+        this.historyClient = new YahooHistoryClient(session);
+        this.searchClient = new YahooSearchClient(session);
+        this.sessionManager = session;
     }
 
     /**
