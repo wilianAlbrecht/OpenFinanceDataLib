@@ -34,13 +34,50 @@ dependencies {
 
 ### Instantiation
 
+#### Important – Instance lifecycle
+
+`OpenFinanceDataLib` is stateful by design and keeps in-memory cache (cookies, crumb and HTTP session data) to achieve better performance and low latency, which makes it suitable for backend and market-data services.
+
+Yahoo Finance is *extremely sensitive* to execution context.
+If the internal session is lost or recreated, Yahoo will respond with `401 Unauthorized`.
+
+Because of this:
+
+- A single OpenFinanceData instance must be reused for the entire application lifetime
+- The instance *must be static* or a true singleton
+- Never create new instances per request
+
 ```java
-OpenFinanceData openFinanceData = new OpenFinanceData();
+// Static instatiation
+private static final OpenFinanceData client = new OpenFinanceData();
 ```
 
-- Empty constructor
-- Session, cookies, and crumb are initialized automatically
-- Crumb cache is shared across the JVM
+or via DI
+
+```java
+@Bean
+public OpenFinanceData openFinanceData() {
+    return new OpenFinanceData();
+}
+```
+#### Development tools
+Tools that restart or reload the application context (such as Spring Boot DevTools) are not compatible with this library.
+
+DevTools will destroy the in-memory cache and break the Yahoo session, causing 401 Unauthorized errors after reload.
+
+When using this library, disable DevTools:
+
+```java
+spring.devtools.restart.enabled=false
+}
+```
+
+For development:
+- use IDE HotSwap for small changes
+- restart the application manually when needed
+- avoid hot-reload frameworks
+
+This behavior is required by the Yahoo Finance session model and is an intentional design trade-off for performance.
 
 ---
 
